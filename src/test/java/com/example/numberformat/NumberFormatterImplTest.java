@@ -8,9 +8,13 @@ public class NumberFormatterImplTest {
 
 private final NumberFormatter numberFormatter = new NumberFormatterImpl();
     @Test
-    public void numTest(){
-        int n = 647;
-
-        assertEquals("647",numberFormatter.format(n));
+    public void minNumTest(){
+        assertEquals("1",numberFormatter.format(1));
     }
+
+    @Test
+    public  void maxNumTest(){
+        assertEquals("2147483647",numberFormatter.format(2147483647));
+    }
+
 }
