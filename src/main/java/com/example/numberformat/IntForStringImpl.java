@@ -9,24 +9,15 @@ public class IntForStringImpl implements IntForString {
 
     @Override
     public String intForStr(int n, List<String> numberList, List<String> daijiPlaceList) {
-        int calcResult;
-        String convertNum;
         String resultStr = "";
-        // 対象のケタ数を取得
-        int loopTimes = loopTimesCalc(n);
-
-        for (int i = 0; i < loopTimes; i++) {
-            //　目的の位の数値を取得
-            calcResult = getCalcResult(n, i);
-            // 取得した数値から文字列を取得
-            convertNum = numberList.get(calcResult);
-            // 文字列を結合
-            resultStr = convertNum.concat(resultStr);
-
+        // 対象のケタ数を取得し、（ケタ数＋１）分だけループ
+        for (int i = 0; i < loopTimesCalc(n); i++) {
+            // getCalcResult：目的の位の数値を取得
+            // 取得した数値から文字列を取得し、文字列を結合
+            resultStr = numberList.get(getCalcResult(n, i)).concat(resultStr);
         }
         // 文字列化したものを返却　　
         return resultStr;
-
     }
 
     // 対象ケタの数値を計算
@@ -39,12 +30,11 @@ public class IntForStringImpl implements IntForString {
     // 対象のケタ数を計算
     @Override
     public int loopTimesCalc(int n) {
-        int Times = 0;
-        while (n != 0) {
+        int times;
+        for (times = 0; n != 0; times++) {
             n = n / 10;
-            ++Times;
         }
-        return Times;
+        return times;
     }
 
 }

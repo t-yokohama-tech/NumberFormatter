@@ -26,13 +26,12 @@ public class DaijiNumFormatterImpl implements NumberFormatter {
         String resultStr = intForString.intForStr(n, daijiNumList, daijiPlaceList);
         sb.append(resultStr);
 
-        int strLength = resultStr.length();
         int insertNum = 0;
         // 位の漢字の挿入
         for (int i = 0; i < intForString.loopTimesCalc(n); i++) {
             // 値が0以外の場合に位の漢字を挿入する
             if (intForString.getCalcResult(n, i) != 0) {
-                sb.insert(strLength - insertNum, daijiPlaceList.get(i));
+                sb.insert(resultStr.length() - insertNum, daijiPlaceList.get(i));
                 ++insertNum;
             }
         }
