@@ -18,11 +18,26 @@ public class DaijiNumFormatterImpl implements NumberFormatter {
         );
 
         List<String> daijiNumList = List.of(
-                "壱", "弐", "参", "肆", "伍", "陸", "漆", "捌", "玖"
+                "", "壱", "弐", "参", "肆", "伍", "陸", "漆", "捌", "玖"
         );
+        // 位のインサートのためのStringBuilderを宣言
+        StringBuilder sb = new StringBuilder();
+        // 数字部分の文字列化の結果を取得
+        String resultStr = intForString.intForStr(n, daijiNumList, daijiPlaceList);
+        sb.append(resultStr);
 
+        int strLength = resultStr.length();
+        int insertNum = 0;
+        // 位の漢字の挿入
+        for (int i = 0; i < intForString.loopTimesCalc(n); i++) {
+            // 値が0以外の場合に位の漢字を挿入する
+            if (intForString.getCalcResult(n, i) != 0) {
+                sb.insert(strLength - insertNum, daijiPlaceList.get(i));
+                ++insertNum;
+            }
+        }
         // 文字列化処理したものを返却　　
-        return intForString.intForStr(n, daijiPlaceList, daijiNumList);
+        return sb.toString();
     }
 
 }
