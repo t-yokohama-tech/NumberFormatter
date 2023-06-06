@@ -23,7 +23,7 @@ public class DaijiNumFormatterImpl implements NumberFormatter {
         // 位のインサートのためのStringBuilderを宣言
         StringBuilder sb = new StringBuilder();
         // 数字部分の文字列化の結果を取得
-        String resultStr = intForString.intForStr(n, daijiNumList, daijiPlaceList);
+        String resultStr = intForString.intForStr(n, daijiNumList);
         sb.append(resultStr);
 
         int insertNum = 0;

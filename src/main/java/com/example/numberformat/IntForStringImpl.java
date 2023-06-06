@@ -8,7 +8,7 @@ import java.util.List;
 public class IntForStringImpl implements IntForString {
 
     @Override
-    public String intForStr(int n, List<String> numberList, List<String> daijiPlaceList) {
+    public String intForStr(int n, List<String> numberList) {
         String resultStr = "";
         // 対象のケタ数を取得し、（ケタ数＋１）分だけループ
         for (int i = 0; i < loopTimesCalc(n); i++) {

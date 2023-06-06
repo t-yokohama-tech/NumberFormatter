@@ -18,7 +18,7 @@ public class NumberFormatterImpl implements NumberFormatter {
         );
 
         // 文字列化処理したものを返却　　
-        return intForString.intForStr(n, numberList, null);
+        return intForString.intForStr(n, numberList);
     }
 
 }
