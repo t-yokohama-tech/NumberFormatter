@@ -4,7 +4,7 @@ import java.util.List;
 
 public class DaijiNumFormat extends AbstractFormat {
 
-    public DaijiNumFormat(int n, List<String> numberList){
+    public DaijiNumFormat(int n, List<String> numberList) {
         this.n = n;
         this.numberList = numberList;
     }
@@ -17,6 +17,9 @@ public class DaijiNumFormat extends AbstractFormat {
             // 取得した数値から文字列を取得し、文字列を結合
             resultStr = numberList.get((n / (int) Math.pow(10, i)) % 10).concat(resultStr);
         }
+        // 位の漢字の挿入処理
+        resultStr = daijiPlaceInsert(n, resultStr, times);
+
         // 文字列化したものを返却　　
         return resultStr;
     }
@@ -27,5 +30,26 @@ public class DaijiNumFormat extends AbstractFormat {
             n = n / 10;
         }
         return times;
+    }
+
+    public String daijiPlaceInsert(int n, String resultStr, int times) {
+        List<String> daijiPlaceList = List.of(
+                "", "拾", "佰", "仟", "萬"
+        );
+        // 位のインサートのためのStringBuilderを宣言
+        StringBuilder sb = new StringBuilder();
+        sb.append(resultStr);
+
+        int insertNum = 0;
+        // 位の漢字の挿入
+        for (int i = 0; i < times; i++) {
+            // 値が0以外の場合に位の漢字を挿入する
+            if ((n / (int) Math.pow(10, i)) % 10 != 0) {
+                sb.insert(resultStr.length() - insertNum, daijiPlaceList.get(i));
+                ++insertNum;
+            }
+        }
+        // 文字列化処理したものを返却　　
+        return sb.toString();
     }
 }

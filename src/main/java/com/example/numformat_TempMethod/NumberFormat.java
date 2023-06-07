@@ -4,10 +4,9 @@ import java.util.List;
 
 public class NumberFormat extends AbstractFormat {
 
-    public NumberFormat(int n, List<String> numberList, int times){
+    public NumberFormat(int n, List<String> numberList){
         this.n = n;
         this.numberList = numberList;
-        this.times=times;
     }
 
 
