@@ -19,14 +19,20 @@ public class NumFormatMain {
                 "", "壱", "弐", "参", "肆", "伍", "陸", "漆", "捌", "玖"
         );
 
+        AbstractFormat abstractFormat = null;
+
         if (mode == 1) {
-            AbstractFormat abstractFormat = new NumberFormat(n, numberList, mode);
-            System.out.print(abstractFormat.format());
+            abstractFormat = new NumberFormat(n, numberList, mode);
+
         } else if (mode == 2) {
-            AbstractFormat abstractFormat = new DaijiNumFormat(n, daijiNumList, mode);
-            System.out.print(abstractFormat.format());
+            abstractFormat = new NumberFormat(n, daijiNumList, mode);
+
         } else if (mode == 3) {
             System.out.print("coming soon!");
+        }
+
+        if (abstractFormat != null) {
+            abstractFormat.format();
         }
 
     }

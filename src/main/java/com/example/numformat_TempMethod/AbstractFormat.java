@@ -14,7 +14,7 @@ public abstract class AbstractFormat {
 
     public abstract String daijiPlaceInsert(int n, String resultStr, int times);
 
-    public String format() {
+    public void format() {
 
         int times = loopTimesCalc(this.n);
 
@@ -26,7 +26,7 @@ public abstract class AbstractFormat {
             // roma処理
         }
 
-        return resultStr;
+        System.out.print(resultStr);
 
     }
 
