@@ -20,10 +20,10 @@ public class NumFormatMain {
         );
 
         if (mode == 1) {
-            AbstractFormat abstractFormat = new NumberFormat(n, numberList);
+            AbstractFormat abstractFormat = new NumberFormat(n, numberList, mode);
             System.out.print(abstractFormat.format());
         } else if (mode == 2) {
-            AbstractFormat abstractFormat = new DaijiNumFormat(n, daijiNumList);
+            AbstractFormat abstractFormat = new DaijiNumFormat(n, daijiNumList, mode);
             System.out.print(abstractFormat.format());
         } else if (mode == 3) {
             System.out.print("coming soon!");
