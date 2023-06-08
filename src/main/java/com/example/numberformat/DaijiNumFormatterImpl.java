@@ -19,8 +19,8 @@ public class DaijiNumFormatterImpl extends AbstractNumberFormatter {
     protected String formatDigit(int digit, int place) {
 
         if (digit == 0) {
-            // 取得した数値が0の場合は桁の漢字は結合せず返却
-            return daijiNumList.get(digit);
+            // 取得した数値が0の場合は空文字を返却
+            return "";
         } else {
             // 数値の漢字＋桁の漢字を結合し、返却
             return daijiNumList.get(digit).concat(daijiPlaceList.get(place));
