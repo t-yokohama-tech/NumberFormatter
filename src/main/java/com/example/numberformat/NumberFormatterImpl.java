@@ -6,19 +6,16 @@ import java.util.List;
 
 
 @Component
-public class NumberFormatterImpl implements NumberFormatter {
+public class NumberFormatterImpl extends AbstractNumberFormatter {
 
-    private final IntForString intForString = new IntForStringImpl();
+    private static final List<String> numberList = List.of(
+            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
+    );
 
     @Override
-    public String format(int n) {
-
-        List<String> numberList = List.of(
-                "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
-        );
-
+    protected String formatDigit(int digit, int place) {
         // 文字列化処理したものを返却　　
-        return intForString.intForStr(n, numberList);
+        return numberList.get(digit);
     }
 
 }

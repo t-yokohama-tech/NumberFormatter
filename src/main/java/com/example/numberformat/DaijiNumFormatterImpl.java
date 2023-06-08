@@ -6,37 +6,28 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class DaijiNumFormatterImpl implements NumberFormatter {
+public class DaijiNumFormatterImpl extends AbstractNumberFormatter {
 
-    private final IntForString intForString = new IntForStringImpl();
+    private static final List<String> daijiNumList = List.of(
+            "", "壱", "弐", "参", "肆", "伍", "陸", "漆", "捌", "玖"
+    );
+    private static final List<String> daijiPlaceList = List.of(
+            "", "拾", "佰", "仟", "萬"
+    );
 
     @Override
-    public String format(int n) {
+    protected String formatDigit(int digit, int place) {
 
-        List<String> daijiPlaceList = List.of(
-                "", "拾", "佰", "仟", "萬"
-        );
-
-        List<String> daijiNumList = List.of(
-                "", "壱", "弐", "参", "肆", "伍", "陸", "漆", "捌", "玖"
-        );
-        // 位のインサートのためのStringBuilderを宣言
-        StringBuilder sb = new StringBuilder();
-        // 数字部分の文字列化の結果を取得
-        String resultStr = intForString.intForStr(n, daijiNumList);
-        sb.append(resultStr);
-
-        int insertNum = 0;
-        // 位の漢字の挿入
-        for (int i = 0; i < intForString.loopTimesCalc(n); i++) {
-            // 値が0以外の場合に位の漢字を挿入する
-            if (intForString.getCalcResult(n, i) != 0) {
-                sb.insert(resultStr.length() - insertNum, daijiPlaceList.get(i));
-                ++insertNum;
-            }
+        if (digit == 0) {
+            // 取得した数値が0の場合は桁の漢字は結合せず返却
+            return daijiNumList.get(digit);
+        } else {
+            // 数値の漢字＋桁の漢字を結合し、返却
+            return daijiNumList.get(digit).concat(daijiPlaceList.get(place));
         }
-        // 文字列化処理したものを返却　　
-        return sb.toString();
     }
 
+
 }
+
+
