@@ -4,16 +4,26 @@ package com.example.numberformat;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
 
 
 @Component
 public class DaijiNumFormatterImpl extends AbstractNumberFormatter {
 
-    private static final List<String> daijiNumList = List.of(
-            "", "壱", "弐", "参", "肆", "伍", "陸", "漆", "捌", "玖"
+
+    private static final Map<Integer, String> daijiNumMap = Map.of(
+            1, "壱",
+            2, "弐",
+            3, "参",
+            4, "肆",
+            5, "伍",
+            6, "陸",
+            7, "漆",
+            8, "捌",
+            9, "玖"
     );
+
     private static final List<String> daijiPlaceList = List.of(
             "", "拾", "佰", "仟", "萬"
     );
@@ -21,10 +31,9 @@ public class DaijiNumFormatterImpl extends AbstractNumberFormatter {
     @Override
     protected String formatDigit(int digit, int place) {
 
-        return Optional.ofNullable(daijiNumList.get(digit))
-                .filter(Predicate.not(String::isBlank))
-                .map( s -> s + daijiPlaceList.get(place) )
-                .orElse( "" );
+        return Optional.ofNullable(daijiNumMap.get(digit))
+                .map(s -> s + daijiPlaceList.get(place))
+                .orElse("");
     }
 
 }
