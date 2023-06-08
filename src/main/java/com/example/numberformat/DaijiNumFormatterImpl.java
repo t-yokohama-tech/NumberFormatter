@@ -4,6 +4,7 @@ package com.example.numberformat;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class DaijiNumFormatterImpl extends AbstractNumberFormatter {
@@ -18,13 +19,13 @@ public class DaijiNumFormatterImpl extends AbstractNumberFormatter {
     @Override
     protected String formatDigit(int digit, int place) {
 
-        if (digit == 0) {
-            // 取得した数値が0の場合は空文字を返却
-            return "";
-        } else {
-            // 数値の漢字＋桁の漢字を結合し、返却
-            return daijiNumList.get(digit).concat(daijiPlaceList.get(place));
-        }
+        Map<Boolean, String> placeNeedMap = Map.of(
+                // 取得した数値が0の場合は空文字を返却
+                Boolean.TRUE, "",
+                // 数値の漢字＋桁の漢字を結合し、返却
+                Boolean.FALSE, daijiNumList.get(digit).concat(daijiPlaceList.get(place))
+        );
+            return placeNeedMap.get(digit == 0);
     }
 
 
