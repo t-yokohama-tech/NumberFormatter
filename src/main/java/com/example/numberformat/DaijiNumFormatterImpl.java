@@ -4,36 +4,53 @@ package com.example.numberformat;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 
 @Component
 public class DaijiNumFormatterImpl extends AbstractNumberFormatter {
 
+    private interface DigitFormatter{
+        String format(int place );
+    }
 
-    private static final Map<Integer, String> daijiNumMap = Map.of(
-            1, "壱",
-            2, "弐",
-            3, "参",
-            4, "肆",
-            5, "伍",
-            6, "陸",
-            7, "漆",
-            8, "捌",
-            9, "玖"
+    private static DigitFormatter empty(){
+
+        return new DigitFormatter() {
+            @Override
+            public String format(int place){
+                return "";
+            }
+        };
+    }
+
+    private static DigitFormatter digit(String digit){
+        return new DigitFormatter() {
+            @Override
+            public String format(int place){
+                return digit + daijiPlaceList.get(place);
+            }
+        };
+    }
+
+    private static final List<DigitFormatter> digitFormatters = List.of(
+            empty(),     // 0
+            digit("壱"), // 1
+            digit("弐"), // 2
+            digit("参"), // 3
+            digit("肆"), // 4
+            digit("伍"), // 5
+            digit("陸"), // 6
+            digit("漆"), // 7
+            digit("捌"), // 8
+            digit("玖")  // 9
     );
-
     private static final List<String> daijiPlaceList = List.of(
             "", "拾", "佰", "仟", "萬"
     );
 
     @Override
     protected String formatDigit(int digit, int place) {
-
-        return Optional.ofNullable(daijiNumMap.get(digit))
-                .map(s -> s + daijiPlaceList.get(place))
-                .orElse("");
+        return digitFormatters.get(digit).format(place);
     }
 
 }
