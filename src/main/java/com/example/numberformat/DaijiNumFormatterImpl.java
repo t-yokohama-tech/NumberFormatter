@@ -15,21 +15,11 @@ public class DaijiNumFormatterImpl extends AbstractNumberFormatter {
 
     private static DigitFormatter empty(){
 
-        return new DigitFormatter() {
-            @Override
-            public String format(int place){
-                return "";
-            }
-        };
+        return place -> "";
     }
 
     private static DigitFormatter digit(String digit){
-        return new DigitFormatter() {
-            @Override
-            public String format(int place){
-                return digit + daijiPlaceList.get(place);
-            }
-        };
+        return place -> digit + daijiPlaceList.get(place);
     }
 
     private static final List<DigitFormatter> digitFormatters = List.of(
