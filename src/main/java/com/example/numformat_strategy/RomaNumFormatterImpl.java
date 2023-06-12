@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Component
-public class RomaNumFormatterImpl implements NumFormatStrategy {
+public class RomaNumFormatterImpl implements NumFormatContext.NumFormatStrategy {
 
     private static final Map<Integer, String> romaOnesPlaceMap = Map.of(
             1, "Ⅰ",

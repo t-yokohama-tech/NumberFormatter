@@ -6,7 +6,7 @@ import java.util.List;
 
 
 @Component
-public class NumFormatStrategyImpl implements NumFormatStrategy {
+public class NumFormatStrategyImpl implements NumFormatContext.NumFormatStrategy {
 
     private static final List<String> numberList = List.of(
             "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
