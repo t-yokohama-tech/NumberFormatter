@@ -1,28 +1,29 @@
 package com.example.numformat_strategy;
 
-import com.example.numformat_strategy.RomaNumFormatterImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RomaNumFormatterImplTest {
 
-    private final RomaNumFormatterImpl romaNumFormatter = new RomaNumFormatterImpl();
+    private final NumFormatStrategyImpl numFormatStrategy = new NumFormatStrategyImpl();
+
+    private final NumFormatContext numFormatContext = new NumFormatContext(numFormatStrategy);
 
 
     @Test
     public void minRomaTest() {
-        assertEquals("Ⅰ", romaNumFormatter.format(1));
+        assertEquals("Ⅰ", numFormatContext.format(1));
     }
 
     @Test
     public void maxRomaTest() {
-        assertEquals("MMMCMXCⅨ", romaNumFormatter.format(3999));
+        assertEquals("MMMCMXCⅨ", numFormatContext.format(3999));
     }
 
     @Test
     public void WithZeroPtnTest() {
-        assertEquals("MMⅠ", romaNumFormatter.format(2001));
+        assertEquals("MMⅠ", numFormatContext.format(2001));
     }
 
 }

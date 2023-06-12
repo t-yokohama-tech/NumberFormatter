@@ -7,7 +7,7 @@ import java.util.List;
 
 
 @Component
-public class DaijiNumFormatterImpl implements NumFormatContext.NumFormatStrategy {
+public class DaijiNumFormatterImpl implements NumFormatStrategy {
 
     private interface DigitFormatter{
         String format(int place );
@@ -38,32 +38,7 @@ public class DaijiNumFormatterImpl implements NumFormatContext.NumFormatStrategy
             "", "拾", "佰", "仟", "萬"
     );
 
-    public String format(int n) {
-
-        int place = 1; //位
-        String resultStr = "";
-        //引数の値から桁数を取得=ループ回数
-        int loopTimes = String.valueOf(n).length();
-
-        for (int i = 0; i < loopTimes; i++) {
-            int calcResult;
-            String convertNum;
-            //　目的の位の数値を取得
-            calcResult = (n / (place)) % 10;
-            // 割る位の繰り上げ
-            place = place * 10;
-            // 取得した数値から文字列を取得
-            convertNum = formatDigit(calcResult, i);
-            // 文字列を結合
-            resultStr = convertNum.concat(resultStr);
-        }
-        // 文字列化したものを返却　　
-        return resultStr;
-    }
-
-
-
-    protected String formatDigit(int digit, int place) {
+    public String formatDigit(int digit, int place) {
         return digitFormatters.get(digit).format(place);
     }
 
