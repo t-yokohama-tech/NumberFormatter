@@ -8,7 +8,7 @@ public class DaijiNumFormatterImplTest {
 
 
     private final DaijiNumFormatterImpl daijiNumberFormatter = new DaijiNumFormatterImpl();
-    NumFormatContext numFormatContext = new NumFormatContext(daijiNumberFormatter);
+    private final NumFormatContext numFormatContext = new NumFormatContext(daijiNumberFormatter);
 
 
 
