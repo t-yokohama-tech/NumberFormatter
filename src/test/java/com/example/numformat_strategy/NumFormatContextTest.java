@@ -7,7 +7,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
 public class NumFormatContextTest {
-    private final NumFormatStrategyImpl numFormatStrategy = mock(NumFormatStrategyImpl.class);
+    private final NumFormatStrategy numFormatStrategy = mock(NumFormatStrategy.class);
 
     private final NumFormatContext numFormatContext = new NumFormatContext(numFormatStrategy);
 
@@ -17,13 +17,13 @@ public class NumFormatContextTest {
     @Test
     public void callConfirmTest() {
         int n = 1;
-        when(numFormatStrategy.formatDigit(anyInt(), anyInt())).thenReturn("1");
+        when(numFormatStrategy.formatDigit(eq(n), anyInt())).thenReturn("1");
         when(numFormatContext.format(n)).thenReturn("1");
         var result = numFormatContext.format(n);
 
         // 結果の確認
         assertEquals("1", result);
-        verify(numFormatStrategy, times(1)).formatDigit(anyInt(), anyInt());
+        verify(numFormatStrategy, times(1)).formatDigit(eq(n), anyInt());
 
     }
 

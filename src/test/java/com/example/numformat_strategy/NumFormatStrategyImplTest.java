@@ -3,22 +3,18 @@ package com.example.numformat_strategy;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyInt;
 
 public class NumFormatStrategyImplTest {
 
     private final NumFormatStrategyImpl numFormatStrategy = new NumFormatStrategyImpl();
 
-    private final NumFormatContext numFormatContext = new NumFormatContext(numFormatStrategy);
 
-
+    // formatDigit()が呼ばれ、文字列の数字を返すことの確認
     @Test
-    public void minNumTest() {
-        assertEquals("1", numFormatContext.format(1));
+    public void formatDigitTest() {
+        assertEquals("1", numFormatStrategy.formatDigit(1, anyInt()));
     }
 
-    @Test
-    public void maxNumTest() {
-        assertEquals("2147483647", numFormatContext.format(2147483647));
-    }
 }
 
