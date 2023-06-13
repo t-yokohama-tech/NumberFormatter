@@ -1,5 +1,5 @@
 package com.example.numberformat;
 
-interface NumberFormatter{
+public interface NumberFormatter{
     String format(int n);
 }
