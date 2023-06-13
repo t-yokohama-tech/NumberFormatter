@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RomaNumFormatterImplTest {
 
-    private final NumFormatStrategyImpl numFormatStrategy = new NumFormatStrategyImpl();
+    private final RomaNumFormatterImpl romaNumFormatter = new RomaNumFormatterImpl();
 
-    private final NumFormatContext numFormatContext = new NumFormatContext(numFormatStrategy);
+    private final NumFormatContext numFormatContext = new NumFormatContext(romaNumFormatter);
 
 
     @Test

@@ -27,7 +27,7 @@ public class NumFormatContextTest {
 
     }
 
-    // NumFormatContext.format() の戻り値が strategy.formatDigit() の戻り値を結合したもの
+    // NumFormatContext.format() の戻り値が strategy.formatDigit() の戻り値を結合したものであることを確認
     @Test
     public void StrConcatTest() {
         int n = 123;
