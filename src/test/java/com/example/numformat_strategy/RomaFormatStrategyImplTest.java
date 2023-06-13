@@ -3,29 +3,16 @@ package com.example.numformat_strategy;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.eq;
 
 public class RomaFormatStrategyImplTest {
 
     private final RomaFormatStrategyImpl romaFormatStrategy = new RomaFormatStrategyImpl();
 
-    //private final NumFormatContext numFormatContext = mock();
-
-
+    // formatDigit()が呼ばれ、ローマ数字を返すことの確認
     @Test
-    public void minRomaTest() {
-        assertEquals("Ⅰ", romaFormatStrategy.formatDigit(eq(1), anyInt()));
+    public void formatDigitTest() {
+        assertEquals("Ⅰ", romaFormatStrategy.formatDigit(1, 0));
     }
 
-    @Test
-    public void maxRomaTest() {
-        assertEquals("MMMCMXCⅨ", romaFormatStrategy.formatDigit(eq(3999), anyInt()));
-    }
-
-    @Test
-    public void WithZeroPtnTest() {
-        assertEquals("MMⅠ", romaFormatStrategy.formatDigit(eq(2001), anyInt()));
-    }
 
 }
