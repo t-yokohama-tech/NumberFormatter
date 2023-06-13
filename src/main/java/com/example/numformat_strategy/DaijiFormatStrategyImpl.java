@@ -7,7 +7,7 @@ import java.util.List;
 
 
 @Component
-public class DaijiNumFormatterImpl implements NumFormatStrategy {
+public class DaijiFormatStrategyImpl implements NumFormatStrategy {
 
     private interface DigitFormatter{
         String format(int place );

@@ -13,7 +13,7 @@ public class NumFormatStrategyImplTest {
     // formatDigit()が呼ばれ、文字列の数字を返すことの確認
     @Test
     public void formatDigitTest() {
-        assertEquals("1", numFormatStrategy.formatDigit(1, anyInt()));
+        assertEquals("1", numFormatStrategy.formatDigit(1, 1));
     }
 
 }

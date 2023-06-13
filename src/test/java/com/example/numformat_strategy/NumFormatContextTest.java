@@ -11,19 +11,21 @@ public class NumFormatContextTest {
 
     private final NumFormatContext numFormatContext = new NumFormatContext(numFormatStrategy);
 
-
     // NumFormatContext.format() が適切に strategy.formatDigit() を呼ぶこと
     // 数値「1」の場合、formatDigitが１度呼ばれることを確認
     @Test
     public void callConfirmTest() {
-        int n = 1;
-        when(numFormatStrategy.formatDigit(eq(n), anyInt())).thenReturn("1");
-        when(numFormatContext.format(n)).thenReturn("1");
-        var result = numFormatContext.format(n);
+        int n = 12345;
 
+        for (int i = 1; i <= 5; i++) {
+            when(numFormatStrategy.formatDigit(i, 5 - i)).thenReturn(Integer.toString(i));
+        }
+        var result = numFormatContext.format(n);
         // 結果の確認
-        assertEquals("1", result);
-        verify(numFormatStrategy, times(1)).formatDigit(eq(n), anyInt());
+        assertEquals("12345", result);
+        for (int i = 1; i <= 5; i++) {
+            verify(numFormatStrategy, times(1)).formatDigit(i, 5 - i);
+        }
 
     }
 
