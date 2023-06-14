@@ -4,10 +4,10 @@ import com.example.numberformat.NumberFormatter;
 import org.springframework.stereotype.Component;
 
 @Component
+@lombok.AllArgsConstructor
 public class RomaNumFormatterImpl implements NumberFormatter {
 
-    private final RomaFormatStrategyImpl romaFormatStrategy = new RomaFormatStrategyImpl();
-    private final NumFormatContext numFormatContext = new NumFormatContext(romaFormatStrategy);
+    private final NumFormatContext numFormatContext;
 
     @Override
     public String format(int n) {

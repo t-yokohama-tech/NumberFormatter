@@ -6,10 +6,11 @@ import org.springframework.stereotype.Component;
 
 
 @Component
+@lombok.AllArgsConstructor
 public class DaijiNumFormatterImpl implements NumberFormatter {
 
-    private final DaijiFormatStrategyImpl daijiFormatStrategy = new DaijiFormatStrategyImpl();
-    private final NumFormatContext numFormatContext = new NumFormatContext(daijiFormatStrategy);
+
+    private final NumFormatContext numFormatContext;
 
     @Override
     public String format(int n) {
