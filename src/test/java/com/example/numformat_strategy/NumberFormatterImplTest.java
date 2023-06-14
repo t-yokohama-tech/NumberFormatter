@@ -7,7 +7,7 @@ import static org.mockito.Mockito.*;
 
 public class NumberFormatterImplTest {
 
-   private final NumFormatContext numFormatContext = mock(NumFormatContext.class);
+   private final INumFormatContext numFormatContext = mock(NumFormatContext.class);
 
     private final NumberFormatterImpl numberFormatter
             = new NumberFormatterImpl(numFormatContext);

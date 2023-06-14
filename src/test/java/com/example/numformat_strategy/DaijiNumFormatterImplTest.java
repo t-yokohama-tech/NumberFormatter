@@ -8,7 +8,7 @@ import static org.mockito.Mockito.times;
 
 public class DaijiNumFormatterImplTest {
 
-    private final NumFormatContext numFormatContext = mock(NumFormatContext.class);
+    private final INumFormatContext numFormatContext = mock(NumFormatContext.class);
     private final DaijiNumFormatterImpl daijiNumberFormatter
             = new DaijiNumFormatterImpl(numFormatContext);
 

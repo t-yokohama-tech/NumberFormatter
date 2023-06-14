@@ -1,7 +1,7 @@
 package com.example.numformat_strategy;
 
 @lombok.AllArgsConstructor
-public class NumFormatContext {
+public class NumFormatContext implements INumFormatContext{
 
 
     private final NumFormatStrategy numFormatStrategy;

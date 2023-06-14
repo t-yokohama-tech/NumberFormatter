@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @lombok.AllArgsConstructor
 public class RomaNumFormatterImpl implements NumberFormatter {
 
-    private final NumFormatContext numFormatContext;
+    private final INumFormatContext numFormatContext;
 
     @Override
     public String format(int n) {

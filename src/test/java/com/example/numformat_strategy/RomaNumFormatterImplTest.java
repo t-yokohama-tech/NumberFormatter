@@ -8,7 +8,7 @@ import static org.mockito.Mockito.times;
 
 public class RomaNumFormatterImplTest {
 
-    private final NumFormatContext numFormatContext = mock(NumFormatContext.class);
+    private final INumFormatContext numFormatContext = mock(INumFormatContext.class);
 
     private final RomaNumFormatterImpl romaNumFormatter =
             new RomaNumFormatterImpl(numFormatContext);

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class DaijiNumFormatterImpl implements NumberFormatter {
 
 
-    private final NumFormatContext numFormatContext;
+    private final INumFormatContext numFormatContext;
 
     @Override
     public String format(int n) {
