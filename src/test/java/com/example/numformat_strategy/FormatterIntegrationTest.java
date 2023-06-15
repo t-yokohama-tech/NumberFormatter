@@ -7,13 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FormatterIntegrationTest {
 
     // アラビア数字
-    NumberFormatterImpl numberFormatter
+    private final NumberFormatterImpl numberFormatter
             = new NumberFormatterImpl(new NumFormatContext(new NumFormatStrategyImpl()));
     // 大字
-    DaijiNumFormatterImpl daijiNumFormatter
+    private final DaijiNumFormatterImpl daijiNumFormatter
             = new DaijiNumFormatterImpl(new NumFormatContext(new DaijiFormatStrategyImpl()));
     // ローマ数字
-    RomaNumFormatterImpl romaNumFormatter
+    private final RomaNumFormatterImpl romaNumFormatter
             = new RomaNumFormatterImpl(new NumFormatContext(new RomaFormatStrategyImpl()));
 
 
