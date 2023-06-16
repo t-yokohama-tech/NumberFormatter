@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 public class DaijiNumFormatterImpl implements NumberFormatter {
 
 
-    private final INumFormatContext numFormatContext;
+    private final INumFormatContext chineseNumFormatContext;
 
     @Override
     public String format(int n) {
-        return numFormatContext.format(n);
+        return chineseNumFormatContext.format(n);
     }
 }
 

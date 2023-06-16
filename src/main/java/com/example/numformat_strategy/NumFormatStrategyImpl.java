@@ -1,9 +1,11 @@
 package com.example.numformat_strategy;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 
-
+@Component
 public class NumFormatStrategyImpl implements NumFormatStrategy {
 
     private static final List<String> numberList = List.of(

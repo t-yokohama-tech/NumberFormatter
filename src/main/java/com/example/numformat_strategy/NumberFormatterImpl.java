@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 @lombok.AllArgsConstructor
 public class NumberFormatterImpl implements NumberFormatter {
 
-    private final INumFormatContext numFormatContext;
+    private final INumFormatContext arabicNumFormatContext;
 
     @Override
     public String format(int n) {
-        return numFormatContext.format(n);
+        return arabicNumFormatContext.format(n);
     }
 }
