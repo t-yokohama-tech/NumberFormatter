@@ -10,12 +10,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FormatterIntegrationTest {
 
         @Autowired
+        @SuppressWarnings("unused")
         private NumberFormatterImpl numberFormatter;
 
         @Autowired
+        @SuppressWarnings("unused")
         private DaijiNumFormatterImpl daijiNumFormatter;
 
         @Autowired
+        @SuppressWarnings("unused")
         private RomaNumFormatterImpl romaNumFormatter;
 
 

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 public class Config {
 
     @Bean
-    public INumFormatContext arabicNumFormatContext(NumFormatStrategyImpl strategy) {
+    public INumFormatContext arabicNumFormatContext(NumFormatStrategyImpl strategy){
         return new NumFormatContext(strategy);
     }
 
